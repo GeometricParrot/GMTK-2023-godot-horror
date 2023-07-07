@@ -1,11 +1,9 @@
 extends CharacterBody2D
 
-
-@export var speed := 300.0
-@export var accel := 400.0
-@export var friction := .25
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-
+#better exports
+@export_range(0.01, 0.5, 0.01) var accel := 0.1
+@export_range(50, 1000, 10) var maxSpeed := 200.0
+var direction: Vector2
 
 
 func _physics_process(delta):
@@ -13,13 +11,34 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_vector := Vector2.ZERO
+
 	input_vector = Input.get_vector("left","right","up","down")
-	input_vector = input_vector.normalized()
-	if input_vector != Vector2.ZERO:
-		velocity += input_vector * accel * delta
-		velocity.x = clamp(velocity.x, -speed, speed)
-		velocity.y = clamp(velocity.y, -speed, speed)
-	else:
-		velocity = lerp(velocity, Vector2.ZERO, friction)
+	print(velocity)
+	
+	input_vector = input_to_dir(input_vector)
 	print(input_vector)
+	direction = direction.lerp(input_vector, accel)
+
+	velocity = direction * maxSpeed  * delta * 60.0
 	move_and_slide()
+	
+
+
+
+func input_to_dir(input: Vector2) -> Vector2:
+	
+	# makes sure to keep analog input
+	# and keep the speed maximum normalized
+	
+	if input.x <= 0.0: 
+		input.x = max(input.x, input.normalized().x)
+	else:
+		input.x = min(input.x, input.normalized().x)
+		
+		
+	if input.y <= 0.0: 
+		input.y = max(input.y, input.normalized().y)
+	else:
+		input.y = min(input.y, input.normalized().y)
+	
+	return input
