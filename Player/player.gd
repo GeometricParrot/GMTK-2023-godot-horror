@@ -13,10 +13,10 @@ func _physics_process(delta):
 	var input_vector := Vector2.ZERO
 
 	input_vector = Input.get_vector("left","right","up","down")
-	print(velocity)
+
 	
 	input_vector = input_to_dir(input_vector)
-	print(input_vector)
+
 	direction = direction.lerp(input_vector, accel)
 
 	velocity = direction * maxSpeed  * delta * 60.0

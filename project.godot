@@ -15,12 +15,9 @@ run/main_scene="res://World/world.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"
 
-
 [autoload]
 
 MusicCOntroller="*res://SFX/music_c_ontroller.tscn"
-
-
 
 [input]
 
@@ -52,6 +49,10 @@ down={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":12,"pressure":0.0,"pressed":true,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_physics/layer_2="trigger music"
 
 [rendering]
 
