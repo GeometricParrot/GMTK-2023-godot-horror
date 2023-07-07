@@ -1,15 +1,15 @@
 [gd_scene load_steps=5 format=3 uid="uid://cvvypkl22xnqn"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_fscpc"]
-[ext_resource type="Texture2D" uid="uid://duw4k1jxpw383" path="res://icon.svg" id="2_4egpa"]
+[ext_resource type="Texture2D" uid="uid://c4akavci7pn8" path="res://Player/Assets/slime.png" id="2_nnkxc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2dqk7"]
-radius = 76.0
-height = 152.0
+radius = 27.0
+height = 54.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_idwtr"]
-radius = 85.0
-height = 210.0
+radius = 38.0
+height = 76.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 3
@@ -19,7 +19,8 @@ script = ExtResource("1_fscpc")
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(-1, 13)
-texture = ExtResource("2_4egpa")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_nnkxc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3, 14)
@@ -30,8 +31,10 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerMusicTrigger"]
+position = Vector2(-3, 14)
 shape = SubResource("CapsuleShape2D_idwtr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
 process_callback = 0
 position_smoothing_enabled = true
