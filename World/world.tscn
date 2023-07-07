@@ -1,9 +1,36 @@
-[gd_scene load_steps=2 format=3 uid="uid://xycuuei177jm"]
+[gd_scene load_steps=6 format=3 uid="uid://xycuuei177jm"]
 
+[ext_resource type="Script" path="res://World/world.gd" id="1_0vmvq"]
 [ext_resource type="PackedScene" uid="uid://cvvypkl22xnqn" path="res://Player/player.tscn" id="1_h7dys"]
+[ext_resource type="PackedScene" uid="uid://dwujuhcy23dqa" path="res://SFX/music_c_ontroller.tscn" id="3_ts8wf"]
+[ext_resource type="PackedScene" uid="uid://cu65wqi3alm0o" path="res://SFX/music_trigger.tscn" id="4_qitfw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ewly5"]
+radius = 60.0333
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_0vmvq")
 
 [node name="Player" parent="." instance=ExtResource("1_h7dys")]
 position = Vector2(348, 140)
-motion_mode = 1
+
+[node name="Music Controller" parent="." instance=ExtResource("3_ts8wf")]
+
+[node name="Trigger Hall" parent="." instance=ExtResource("4_qitfw")]
+position = Vector2(101, 431)
+disable_mode = 2
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger Hall"]
+shape = SubResource("CircleShape2D_ewly5")
+
+[node name="Trigger Research" parent="." instance=ExtResource("4_qitfw")]
+position = Vector2(299, 420)
+disable_mode = 2
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger Research"]
+shape = SubResource("CircleShape2D_ewly5")
+
+[connection signal="area_entered" from="Trigger Hall" to="Music Controller" method="_on_trigger_hall_area_entered"]
+[connection signal="area_entered" from="Trigger Research" to="Music Controller" method="_on_trigger_research_area_entered"]

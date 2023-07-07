@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvvypkl22xnqn"]
+[gd_scene load_steps=5 format=3 uid="uid://cvvypkl22xnqn"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_fscpc"]
 [ext_resource type="Texture2D" uid="uid://duw4k1jxpw383" path="res://icon.svg" id="2_4egpa"]
@@ -7,9 +7,15 @@
 radius = 76.0
 height = 152.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_idwtr"]
+radius = 85.0
+height = 210.0
+
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
+motion_mode = 1
 script = ExtResource("1_fscpc")
-speed = 200.0
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(-1, 13)
@@ -18,3 +24,12 @@ texture = ExtResource("2_4egpa")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3, 14)
 shape = SubResource("CapsuleShape2D_2dqk7")
+
+[node name="PlayerMusicTrigger" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerMusicTrigger"]
+shape = SubResource("CapsuleShape2D_idwtr")
+
+[node name="Camera2D" type="Camera2D" parent="."]
