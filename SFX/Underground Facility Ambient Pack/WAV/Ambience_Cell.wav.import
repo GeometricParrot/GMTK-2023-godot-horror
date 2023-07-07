@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cyqw76ik4xcrn"
+path="res://.godot/imported/Ambience_Cell.wav-fbb77c772f2ef1714536cae27c2eb882.sample"
+
+[deps]
+
+source_file="res://SFX/Underground Facility Ambient Pack/WAV/Ambience_Cell.wav"
+dest_files=["res://.godot/imported/Ambience_Cell.wav-fbb77c772f2ef1714536cae27c2eb882.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

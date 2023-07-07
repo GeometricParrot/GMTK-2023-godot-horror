@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dobguhytd82a6"
+path="res://.godot/imported/Ambience_Office.ogg-2b45ab425205c172ceb2994e3a7b5777.oggvorbisstr"
+
+[deps]
+
+source_file="res://SFX/Underground Facility Ambient Pack/OGG/Ambience_Office.ogg"
+dest_files=["res://.godot/imported/Ambience_Office.ogg-2b45ab425205c172ceb2994e3a7b5777.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

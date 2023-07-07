@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwujuhcy23dqa"]
+
+[ext_resource type="Script" path="res://SFX/music_c_ontroller.gd" id="1_04ms1"]
+[ext_resource type="AudioStream" uid="uid://cpjrle1afd6ku" path="res://SFX/Underground Facility Ambient Pack/OGG/Ambience_Armory.ogg" id="2_acwsc"]
+
+[node name="Music Controller" type="Node"]
+script = ExtResource("1_04ms1")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_acwsc")
+volume_db = -5.0

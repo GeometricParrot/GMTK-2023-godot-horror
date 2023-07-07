@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bqjftiujkqbw4"
+path="res://.godot/imported/Ambience_Lockers.ogg-fe0b54557bdecc5eb598a72edd300637.oggvorbisstr"
+
+[deps]
+
+source_file="res://SFX/Underground Facility Ambient Pack/OGG/Ambience_Lockers.ogg"
+dest_files=["res://.godot/imported/Ambience_Lockers.ogg-fe0b54557bdecc5eb598a72edd300637.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
