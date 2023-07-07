@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bh71ke5mlb1w3"
+path="res://.godot/imported/Ambience_Hallway.ogg-61b8d881b17ea1728ae27b0edd03eb56.oggvorbisstr"
+
+[deps]
+
+source_file="res://SFX/Underground Facility Ambient Pack/OGG/Ambience_Hallway.ogg"
+dest_files=["res://.godot/imported/Ambience_Hallway.ogg-61b8d881b17ea1728ae27b0edd03eb56.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
