@@ -1,4 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvvypkl22xnqn"]
+
+[gd_scene load_steps=32 format=3 uid="uid://cvvypkl22xnqn"]
+
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_fscpc"]
 [ext_resource type="Texture2D" uid="uid://c4akavci7pn8" path="res://Player/Assets/slime.png" id="2_nnkxc"]
@@ -29,7 +31,9 @@ texture = ExtResource("3_jn0gb")
 texture_scale = 2.0
 
 [node name="Icon" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
+position = Vector2(2.625, 14.625)
+rotation = 1.5708
+scale = Vector2(0.229972, 0.237)
 texture = ExtResource("2_nnkxc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -60,6 +64,24 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileDetector"]
 shape = SubResource("RectangleShape2D_f7g36")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TileDetector"]
+shape = SubResource("RectangleShape2D_f7g36")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ur3vb")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_nlkxj")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/conditions/idle = false
+parameters/conditions/slide = false
+parameters/Idle/blend_position = Vector2(-0.00529099, -0.00436676)
+parameters/Slide/blend_position = Vector2(-0.00284898, 0.00436687)
+
 
 [node name="Music Controller" parent="." instance=ExtResource("4_cnd6g")]
 
