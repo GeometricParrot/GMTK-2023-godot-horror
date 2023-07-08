@@ -6,6 +6,7 @@ extends CharacterBody2D
 var direction: Vector2
 
 @onready var music = $"Music Controller"
+@onready var animation_tree = $AnimationTree
 
 func _physics_process(delta):
 
@@ -23,7 +24,7 @@ func _physics_process(delta):
 	velocity = direction * maxSpeed  * delta * 60.0
 	move_and_slide()
 	
-
+	handle_animations()
 
 
 func input_to_dir(input: Vector2) -> Vector2:
@@ -57,5 +58,21 @@ func _on_tile_detector_body_shape_entered(body_rid, body, _body_shape_index, _lo
 			var my_song = data.get_custom_data_by_layer_id(0)
 			music.play_song(my_song)
 		
-		
-		
+func handle_animations() -> void:
+	animation_tree.active = true
+	var dir : Vector2 = Input.get_vector("left","right","up","down").normalized()
+	
+	if dir != Vector2.ZERO:
+		animation_tree["parameters/conditions/idle"] = false
+		animation_tree["parameters/conditions/slide"] = true
+	else:
+		animation_tree["parameters/conditions/idle"] = true
+		animation_tree["parameters/conditions/slide"] = false
+	
+	if dir != Vector2.ZERO:
+		animation_tree["parameters/Idle/blend_position"] = dir 
+		animation_tree["parameters/Slide/blend_position"] = dir
+	print(velocity)
+	
+	
+
