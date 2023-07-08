@@ -58,6 +58,7 @@ down={
 [layer_names]
 
 2d_physics/layer_2="trigger music"
+2d_physics/layer_4="music"
 
 [rendering]
 

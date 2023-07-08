@@ -1,7 +1,7 @@
 extends Node
 
 
-var currentlyPlaying: int	# index in playlist array
+var currentlyPlaying: int = 6	# index in playlist array
 @onready var playlist = [$Armory, $Cell, $Hallway, 
 $Janitory, $Lockers, $Office, $Research]
 

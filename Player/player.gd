@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export_range(50, 1000, 10) var maxSpeed := 100.0
 var direction: Vector2
 
+@onready var music = $"Music Controller"
 
 func _physics_process(delta):
 
@@ -42,3 +43,19 @@ func input_to_dir(input: Vector2) -> Vector2:
 		input.y = min(input.y, input.normalized().y)
 	
 	return input
+
+
+# magic code from the internet that make the floor make noise
+func _on_tile_detector_body_shape_entered(body_rid, body, _body_shape_index, _local_shape_index):
+	if body is TileMap:
+		#print("step 1")
+		var collided_tile  = body.get_coords_for_body_rid(body_rid)
+		
+		for i in body.get_layers_count():
+			#print("step 2")
+			var data: TileData = body.get_cell_tile_data(i, collided_tile)
+			var my_song = data.get_custom_data_by_layer_id(0)
+			music.play_song(my_song)
+		
+		
+		
