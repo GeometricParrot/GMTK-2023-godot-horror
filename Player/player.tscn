@@ -1,19 +1,21 @@
-[gd_scene load_steps=31 format=3 uid="uid://cvvypkl22xnqn"]
+
+[gd_scene load_steps=8 format=3 uid="uid://cvvypkl22xnqn"]
+
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_fscpc"]
 [ext_resource type="Texture2D" uid="uid://c4akavci7pn8" path="res://Player/Assets/slime.png" id="2_nnkxc"]
 [ext_resource type="Texture2D" uid="uid://c2jwkmb842hbn" path="res://Player/Assets/radial_gradient.png" id="3_jn0gb"]
+[ext_resource type="PackedScene" uid="uid://dwujuhcy23dqa" path="res://SFX/music_c_ontroller.tscn" id="4_cnd6g"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2dqk7"]
-radius = 27.0
-height = 54.0
+radius = 9.0
+height = 28.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_idwtr"]
-radius = 38.0
-height = 76.0
+height = 28.0
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_76mj1"]
-polygon = PackedVector2Array(18, -9, 25, -5, 37, 7, 20, 29, -5, 35, -21, 28, -37, 26, -35, 11, -39, 4, -8, -13, 11, -11)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7g36"]
+size = Vector2(4, 4)
 
 [sub_resource type="Animation" id="Animation_5a42d"]
 resource_name = "Idle Down"
@@ -586,7 +588,15 @@ collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_fscpc")
 
+[node name="PointLight2D" type="PointLight2D" parent="."]
+enabled = false
+energy = 0.5
+shadow_enabled = true
+texture = ExtResource("3_jn0gb")
+texture_scale = 2.0
+
 [node name="Icon" type="Sprite2D" parent="."]
+
 texture_filter = 1
 position = Vector2(2.625, 14.625)
 rotation = 1.5708
@@ -596,6 +606,7 @@ texture = ExtResource("2_nnkxc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2(-3, 14)
+
 shape = SubResource("CapsuleShape2D_2dqk7")
 
 [node name="PlayerMusicTrigger" type="Area2D" parent="."]
@@ -604,20 +615,21 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerMusicTrigger"]
-position = Vector2(-3, 14)
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_idwtr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+zoom = Vector2(4, 4)
 process_callback = 0
 position_smoothing_enabled = true
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-visible = false
-energy = 0.5
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+energy = 0.3
+
 shadow_enabled = true
 texture = ExtResource("3_jn0gb")
-texture_scale = 2.0
+
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="PointLight2D"]
 occluder = SubResource("OccluderPolygon2D_76mj1")
@@ -636,3 +648,16 @@ parameters/conditions/idle = false
 parameters/conditions/slide = false
 parameters/Idle/blend_position = Vector2(-0.00529099, -0.00436676)
 parameters/Slide/blend_position = Vector2(-0.00284898, 0.00436687)
+
+[node name="TileDetector" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileDetector"]
+shape = SubResource("RectangleShape2D_f7g36")
+
+[node name="Music Controller" parent="." instance=ExtResource("4_cnd6g")]
+
+[connection signal="area_shape_entered" from="TileDetector" to="." method="_on_tile_detector_area_shape_entered"]
+[connection signal="body_shape_entered" from="TileDetector" to="." method="_on_tile_detector_body_shape_entered"]
+

@@ -2,10 +2,13 @@ extends CharacterBody2D
 
 #better exports
 @export_range(0.01, 0.5, 0.01) var accel := 0.1
-@export_range(50, 1000, 10) var maxSpeed := 200.0
+@export_range(50, 1000, 10) var maxSpeed := 100.0
 var direction: Vector2
 
 @onready var animation_tree : AnimationTree = $AnimationTree
+
+@onready var music = $"Music Controller"
+
 
 func _physics_process(delta):
 
@@ -45,6 +48,7 @@ func input_to_dir(input: Vector2) -> Vector2:
 	
 	return input
 
+
 func handle_animations() -> void:
 	var dir : Vector2 = Input.get_vector("left","right","up","down").normalized()
 	
@@ -66,3 +70,19 @@ func handle_animations() -> void:
 
 	
 	print(dir)
+
+
+# magic code from the internet that make the floor make noise
+func _on_tile_detector_body_shape_entered(body_rid, body, _body_shape_index, _local_shape_index):
+	if body is TileMap:
+		#print("step 1")
+		var collided_tile  = body.get_coords_for_body_rid(body_rid)
+		
+		for i in body.get_layers_count():
+			#print("step 2")
+			var data: TileData = body.get_cell_tile_data(i, collided_tile)
+			var my_song = data.get_custom_data_by_layer_id(0)
+			music.play_song(my_song)
+		
+		
+
