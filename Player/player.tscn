@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvvypkl22xnqn"]
+[gd_scene load_steps=10 format=3 uid="uid://cvvypkl22xnqn"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_fscpc"]
 [ext_resource type="Texture2D" uid="uid://c4akavci7pn8" path="res://Player/Assets/slime.png" id="2_nnkxc"]
@@ -15,6 +15,14 @@ height = 28.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7g36"]
 size = Vector2(4, 4)
 
+[sub_resource type="Animation" id="Animation_brceb"]
+resource_name = "IdleUp"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3gjvb"]
+_data = {
+"IdleUp": SubResource("Animation_brceb")
+}
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 3
 collision_mask = 3
@@ -22,6 +30,7 @@ motion_mode = 1
 script = ExtResource("1_fscpc")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 enabled = false
 energy = 0.5
 shadow_enabled = true
@@ -29,6 +38,7 @@ texture = ExtResource("3_jn0gb")
 texture_scale = 2.0
 
 [node name="Icon" type="Sprite2D" parent="."]
+texture_filter = 1
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_nnkxc")
 
@@ -62,6 +72,11 @@ collision_mask = 8
 shape = SubResource("RectangleShape2D_f7g36")
 
 [node name="Music Controller" parent="." instance=ExtResource("4_cnd6g")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3gjvb")
+}
 
 [connection signal="area_shape_entered" from="TileDetector" to="." method="_on_tile_detector_area_shape_entered"]
 [connection signal="body_shape_entered" from="TileDetector" to="." method="_on_tile_detector_body_shape_entered"]
