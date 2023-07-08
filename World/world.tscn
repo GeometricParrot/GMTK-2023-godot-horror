@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://xycuuei177jm"]
+[gd_scene load_steps=11 format=3 uid="uid://xycuuei177jm"]
 
 [ext_resource type="Script" path="res://World/world.gd" id="1_0vmvq"]
 [ext_resource type="PackedScene" uid="uid://cvvypkl22xnqn" path="res://Player/player.tscn" id="1_h7dys"]
 [ext_resource type="Texture2D" uid="uid://cgt2hinhrpwsy" path="res://World/Assets/progress.png" id="2_pjypj"]
 [ext_resource type="PackedScene" uid="uid://dwujuhcy23dqa" path="res://SFX/music_c_ontroller.tscn" id="3_ts8wf"]
 [ext_resource type="PackedScene" uid="uid://cu65wqi3alm0o" path="res://SFX/music_trigger.tscn" id="4_qitfw"]
+[ext_resource type="PackedScene" uid="uid://b3ry08qtv4lr7" path="res://NPCs/waypoint_npc.tscn" id="6_1ohhs"]
+[ext_resource type="PackedScene" uid="uid://d2nkxdcxgqoec" path="res://Other/waypoint.tscn" id="7_g27xn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vrykm"]
 texture = ExtResource("2_pjypj")
@@ -313,6 +315,19 @@ offset_top = -85.0
 offset_right = 65.0
 offset_bottom = -12.0
 text = "Research sound"
+
+[node name="Waypoint NPC" parent="." node_paths=PackedStringArray("way_array") instance=ExtResource("6_1ohhs")]
+position = Vector2(731, 138)
+way_array = [NodePath("../Waypoint"), NodePath("../Waypoint2"), NodePath("../Waypoint3")]
+
+[node name="Waypoint" parent="." instance=ExtResource("7_g27xn")]
+position = Vector2(551, 306)
+
+[node name="Waypoint2" parent="." instance=ExtResource("7_g27xn")]
+position = Vector2(457, 18)
+
+[node name="Waypoint3" parent="." instance=ExtResource("7_g27xn")]
+position = Vector2(20, 161)
 
 [connection signal="area_entered" from="Trigger Hall" to="Music Controller" method="_on_trigger_hall_area_entered"]
 [connection signal="area_entered" from="Trigger Research" to="Music Controller" method="_on_trigger_research_area_entered"]
