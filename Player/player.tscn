@@ -1,19 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvvypkl22xnqn"]
+[gd_scene load_steps=6 format=3 uid="uid://cvvypkl22xnqn"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_fscpc"]
 [ext_resource type="Texture2D" uid="uid://c4akavci7pn8" path="res://Player/Assets/slime.png" id="2_nnkxc"]
 [ext_resource type="Texture2D" uid="uid://c2jwkmb842hbn" path="res://Player/Assets/radial_gradient.png" id="3_jn0gb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2dqk7"]
-radius = 27.0
-height = 54.0
+radius = 9.0
+height = 28.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_idwtr"]
-radius = 38.0
-height = 76.0
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_76mj1"]
-polygon = PackedVector2Array(18, -9, 25, -5, 37, 7, 20, 29, -5, 35, -21, 28, -37, 26, -35, 11, -39, 4, -8, -13, 11, -11)
+height = 28.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 3
@@ -21,13 +17,19 @@ collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_fscpc")
 
+[node name="PointLight2D" type="PointLight2D" parent="."]
+enabled = false
+energy = 0.5
+shadow_enabled = true
+texture = ExtResource("3_jn0gb")
+texture_scale = 2.0
+
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(-1, 13)
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_nnkxc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3, 14)
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_2dqk7")
 
 [node name="PlayerMusicTrigger" type="Area2D" parent="."]
@@ -35,20 +37,10 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerMusicTrigger"]
-position = Vector2(-3, 14)
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_idwtr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+zoom = Vector2(4, 4)
 process_callback = 0
 position_smoothing_enabled = true
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-energy = 0.5
-shadow_enabled = true
-texture = ExtResource("3_jn0gb")
-texture_scale = 2.0
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="PointLight2D"]
-occluder = SubResource("OccluderPolygon2D_76mj1")
-occluder_light_mask = 2
