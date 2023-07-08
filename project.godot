@@ -24,6 +24,12 @@ MusicCOntroller="*res://SFX/music_c_ontroller.tscn"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 
+[editor]
+
+movie_writer/mjpeg_quality=0.38
+movie_writer/movie_file="C:/Users/Public/Documents/Godot/movie/movie 1.avi"
+movie_writer/fps=30
+
 [input]
 
 left={
