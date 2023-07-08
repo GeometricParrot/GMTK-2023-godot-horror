@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 #better exports
 @export_range(0.01, 0.5, 0.01) var accel := 0.1
-@export_range(50, 1000, 10) var maxSpeed := 200.0
+@export_range(50, 1000, 10) var maxSpeed := 100.0
 var direction: Vector2
 
 

@@ -18,19 +18,18 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+
+func _physics_process(delta):
 	follow_waypoint(delta)
 	move_and_slide()
-	
-
 
 func follow_waypoint(delta):
 	if way_array.size() != 0 and way_array[currentWaypoint] != null:
 		
 		var pointPos = way_array[currentWaypoint].global_position
-		direction = direction.lerp( Vector2.RIGHT.rotated(get_angle_to(pointPos)) * maxSpeed, accel)
+		direction = direction.lerp( Vector2.RIGHT.rotated(get_angle_to(pointPos)), accel)
 		
-		velocity = direction
+		velocity = direction * maxSpeed * delta * 60
 		flashlight.rotation = direction.angle() - PI/4
 		
 		# when close to waypoint
