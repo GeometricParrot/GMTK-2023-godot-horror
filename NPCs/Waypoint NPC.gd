@@ -4,6 +4,9 @@ extends CharacterBody2D
 
 var currentWaypoint: int
 var direction: Vector2 = Vector2(0,0)
+@onready var sprite = $Sprite2D
+
+var localT = 0.0
 
 
 @export_range(0.01, 0.5, 0.01) var accel = 0.1
@@ -20,7 +23,15 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 func _physics_process(delta):
-	follow_waypoint(delta)
+	
+	localT += 0.15
+	
+	if fmod(localT, 1.0) < 0.1:
+		sprite.flip_h  = !sprite.flip_h
+	
+	
+	
+	sprite.rotation = follow_waypoint(delta) - PI/4
 	move_and_slide()
 
 func follow_waypoint(delta):
@@ -38,3 +49,4 @@ func follow_waypoint(delta):
 				currentWaypoint += 1
 			else:
 				currentWaypoint = 0
+		return flashlight.rotation
