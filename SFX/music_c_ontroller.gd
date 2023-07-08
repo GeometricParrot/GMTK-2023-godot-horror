@@ -40,7 +40,7 @@ func play_song(newSong: int):
 		
 		# fade the songs in and out
 		fadeOut.tween_property(playlist[currentlyPlaying], "volume_db" , -40, 1)
-		fadeIn.tween_property(playlist[newSong], "volume_db" , -15, 1)
+		fadeIn.tween_property(playlist[newSong], "volume_db" , -10, 1)
 		
 		currentlyPlaying = newSong
 	
