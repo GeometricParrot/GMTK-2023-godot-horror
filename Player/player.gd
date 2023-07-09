@@ -9,16 +9,35 @@ var hiding: bool = false
 @onready var healthBar = $ProgressBar
 @onready var stealthBar = $Stealth
 
+@onready var myLight = $PointLight2D2
+
 @onready var music = $"Music Controller"
 @onready var animation_tree = $AnimationTree
 
 func _physics_process(delta):
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_vector := Vector2.ZERO
 
 	input_vector = Input.get_vector("left","right","up","down")
+	
+	if Input.is_action_pressed("hide"):
+		hiding = true
+		stealthBar.value -= 1
+		if stealthBar.value > 1:
+			input_vector *= 0.3
+			myLight.set_blend_mode(myLight.BLEND_MODE_SUB)
+			myLight.shadow_enabled = false
+		else:
+			myLight.set_blend_mode(myLight.BLEND_MODE_ADD)
+			myLight.shadow_enabled = true
+	else:
+		hiding = false
+		stealthBar.value += 1
+		myLight.set_blend_mode(myLight.BLEND_MODE_ADD)
+		myLight.shadow_enabled = true
+
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	
 
 	
 	input_vector = input_to_dir(input_vector)
@@ -29,16 +48,14 @@ func _physics_process(delta):
 	if Input.is_action_pressed("hide"):
 		
 		hiding = true
-		print(hiding)
 		stealthBar.value -= 1
 	else:
 		
 		hiding = false
-		print(hiding)
 		stealthBar.value += 1
 		
-	
 	move_and_slide()
+	
 	
 	handle_animations()
 
@@ -95,7 +112,7 @@ func hit(dam):
 	if !hiding  or stealthBar.value < 1:
 		health -= dam
 	healthBar.value = health
-	print(health)
+
 	if health <= 0.0:
 		queue_free()
 		get_tree().change_scene_to_file("res://World/world.tscn")

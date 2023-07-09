@@ -7,6 +7,8 @@ var direction: Vector2 = Vector2(0,0)
 @onready var sprite = $Sprite2D
 
 var localT = 0.0
+var rng = RandomNumberGenerator.new()
+
 
 @onready var rayArray: Array[RayCast2D] = [
 	$PointLight2D/RayCast2D,$PointLight2D/RayCast2D2,$PointLight2D/RayCast2D4,
@@ -34,7 +36,6 @@ func _physics_process(delta):
 	
 	for i in rayArray.size():
 		if rayArray[i].get_collider() != null and mytime > 60:
-			print(rayArray[i].get_collider())
 			rayArray[i].get_collider().hit(1)
 			
 	
@@ -62,7 +63,8 @@ func follow_waypoint(delta):
 		# when close to waypoint
 		if abs(pointPos - global_position).length() < waypointThreshold:
 			if currentWaypoint != way_array.size() - 1:
-				currentWaypoint += 1
+				var uncertan = rng.randi_range(-1, 1)
+				currentWaypoint += 1 * uncertan
 			else:
 				currentWaypoint = 0
 		return flashlight.rotation

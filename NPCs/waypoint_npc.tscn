@@ -14,6 +14,7 @@ script = ExtResource("1_7lkpq")
 texture = ExtResource("2_8w80v")
 flip_v = true
 hframes = 2
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
