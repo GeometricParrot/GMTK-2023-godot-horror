@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://5tq5pgjws2bc"]
+
+[node name="WinScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 731.0
+offset_top = 281.0
+offset_right = 827.0
+offset_bottom = 329.0
+scale = Vector2(7.31434, 6.9594)
+text = "You Win"

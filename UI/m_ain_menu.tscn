@@ -41,6 +41,8 @@ offset_top = 471.0
 offset_right = 910.0
 offset_bottom = 547.0
 scale = Vector2(2.5013, 1.86413)
-text = "Shift to sneak"
+text = "Shift to sneak
+alt to dash
+space to attack"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

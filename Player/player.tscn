@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cvvypkl22xnqn"]
+[gd_scene load_steps=34 format=3 uid="uid://cvvypkl22xnqn"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_fscpc"]
 [ext_resource type="Texture2D" uid="uid://cxxyr4e0gugmh" path="res://Player/Assets/slime.png" id="2_nnkxc"]
@@ -20,6 +20,9 @@ scale_max = 0.02
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kqfdd"]
 polygon = PackedVector2Array(9, -8, -2, -12, -8, -7, -14, -6, -14, 1, -15, 4, -11, 8, 0, 14, 10, 9, 14, 3)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uqosd"]
+radius = 410.122
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2dqk7"]
 radius = 9.0
@@ -446,6 +449,14 @@ flip_v = true
 scale = Vector2(10, 7.95881)
 occluder = SubResource("OccluderPolygon2D_kqfdd")
 occluder_light_mask = 2
+
+[node name="Slime" type="Area2D" parent="Icon"]
+scale = Vector2(1, 0.795881)
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Icon/Slime"]
+shape = SubResource("CircleShape2D_uqosd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

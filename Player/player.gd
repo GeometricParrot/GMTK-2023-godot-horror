@@ -9,6 +9,9 @@ var hiding: bool = false
 @onready var healthBar = $ProgressBar
 @onready var stealthBar = $Stealth
 
+@onready var attackbox = $Icon/Slime
+
+
 @onready var myLight = $PointLight2D2
 @onready var myOccluder = $Icon/LightOccluder2D
 
@@ -38,7 +41,7 @@ func _physics_process(delta):
 		myLight.set_blend_mode(myLight.BLEND_MODE_ADD)
 		myLight.shadow_enabled = true
 		myOccluder.set_occluder_light_mask(2)
-
+	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	
@@ -58,6 +61,18 @@ func _physics_process(delta):
 		hiding = false
 		stealthBar.value += 1
 		
+	
+	if Input.is_action_just_pressed("dash"):
+		if stealthBar.value > 50:
+			velocity *= 10
+			stealthBar.value -= 90
+	
+	if Input.is_action_just_pressed("attack"):
+		if attackbox.has_overlapping_bodies():
+			attackbox.get_overlapping_bodies()[0].queue_free()
+			velocity *= 5
+	
+	
 	move_and_slide()
 	
 	
@@ -95,6 +110,8 @@ func _on_tile_detector_body_shape_entered(body_rid, body, _body_shape_index, _lo
 			var my_song = data.get_custom_data_by_layer_id(0)
 			music.play_song(my_song)
 		
+	
+
 func handle_animations() -> void:
 	animation_tree.active = true
 	var dir : Vector2 = Input.get_vector("left","right","up","down").normalized()
@@ -111,14 +128,16 @@ func handle_animations() -> void:
 		animation_tree["parameters/Slide/blend_position"] = dir
 	#print(velocity)
 	
-	
-	
+
 func hit(dam):
-	
+	var returnMe = false
 	if !hiding  or stealthBar.value < 1:
 		health -= dam
+		returnMe = true
 	healthBar.value = health
-
+	
 	if health <= 0.0:
 		queue_free()
 		get_tree().change_scene_to_file("res://World/world.tscn")
+	return returnMe
+

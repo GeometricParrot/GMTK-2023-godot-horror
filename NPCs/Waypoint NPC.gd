@@ -6,6 +6,8 @@ var currentWaypoint: int
 var direction: Vector2 = Vector2(0,0)
 @onready var sprite = $Sprite2D
 
+
+
 var localT = 0.0
 var rng = RandomNumberGenerator.new()
 
@@ -33,25 +35,21 @@ var mytime = 0
 
 func _physics_process(delta):
 	
-	mytime +=1
-	
-	for i in rayArray.size():
-		if rayArray[i].get_collider() != null:
-			if rayArray[i].get_collider().has_method("hit") and mytime > 60:
-				rayArray[i].get_collider().hit(1)
-				
 	
 	
-	
-	localT += 0.15
-	
-	if fmod(localT, 1.0) < 0.1:
-		sprite.flip_h  = !sprite.flip_h
 	
 	
 	
 	sprite.rotation = follow_waypoint(delta) - PI/4
+	
+	
+	if patrol():	# If hits enemy
+		velocity = Vector2.ZERO
+	
 	move_and_slide()
+	
+	if fmod(localT, 1.0) < 0.1:
+		sprite.flip_h  = !sprite.flip_h
 
 func follow_waypoint(delta):
 	if way_array.size() != 0 and way_array[currentWaypoint] != null:
@@ -75,3 +73,19 @@ func follow_waypoint(delta):
 				currentWaypoint = currentWaypoint
 			
 		return flashlight.rotation
+
+
+
+func patrol():
+	mytime +=1
+	var returnMe = false
+	for i in rayArray.size():
+		if rayArray[i].get_collider() != null:
+			if rayArray[i].get_collider().has_method("hit") and mytime > 60:
+				return rayArray[i].get_collider().hit(1)
+				returnMe = true
+			
+		
+	
+	localT += 0.15
+	return returnMe
