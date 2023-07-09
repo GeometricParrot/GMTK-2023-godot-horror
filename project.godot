@@ -23,6 +23,7 @@ MusicCOntroller="*res://SFX/music_c_ontroller.tscn"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/stretch/mode="viewport"
 
 [input]
 
@@ -65,6 +66,7 @@ hide={
 
 2d_physics/layer_2="trigger music"
 2d_physics/layer_4="music"
+2d_physics/layer_6="detect player"
 
 [rendering]
 

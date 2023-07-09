@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ciioomw56ag7k"]
 
 [ext_resource type="Script" path="res://UI/m_ain_menu.gd" id="1_nlh3j"]
-[ext_resource type="Texture2D" uid="uid://c4akavci7pn8" path="res://Player/Assets/slime.png" id="2_8qo65"]
+[ext_resource type="Texture2D" uid="uid://cxxyr4e0gugmh" path="res://Player/Assets/slime.png" id="2_8qo65"]
 
 [node name="MAin Menu" type="Control"]
 layout_mode = 3

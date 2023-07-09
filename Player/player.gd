@@ -107,6 +107,8 @@ func handle_animations() -> void:
 		animation_tree["parameters/Slide/blend_position"] = dir
 	#print(velocity)
 	
+	
+	
 func hit(dam):
 	
 	if !hiding  or stealthBar.value < 1:
