@@ -1,14 +1,16 @@
 extends Node
 
 
-var currentlyPlaying: int = 6	# index in playlist array
+var currentlyPlaying: int = 3	# index in playlist array
 @onready var playlist = [$Armory, $Cell, $Hallway, 
 $Janitory, $Lockers, $Office, $Research]
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	playlist[currentlyPlaying].play()
+	playlist[currentlyPlaying].volume_db = -5
+	print("yes")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

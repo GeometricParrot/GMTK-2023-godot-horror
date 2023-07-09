@@ -5,7 +5,9 @@ extends CharacterBody2D
 @export_range(50, 1000, 10) var maxSpeed := 100.0
 var direction: Vector2
 var health = 100
+var hiding: bool = false
 @onready var healthBar = $ProgressBar
+@onready var stealthBar = $Stealth
 
 @onready var music = $"Music Controller"
 @onready var animation_tree = $AnimationTree
@@ -24,6 +26,18 @@ func _physics_process(delta):
 	direction = direction.lerp(input_vector, accel)
 
 	velocity = direction * maxSpeed  * delta * 60.0
+	if Input.is_action_pressed("hide"):
+		
+		hiding = true
+		print(hiding)
+		stealthBar.value -= 1
+	else:
+		
+		hiding = false
+		print(hiding)
+		stealthBar.value += 1
+		
+	
 	move_and_slide()
 	
 	handle_animations()
@@ -77,7 +91,9 @@ func handle_animations() -> void:
 	#print(velocity)
 	
 func hit(dam):
-	health -= dam
+	
+	if !hiding  or stealthBar.value < 1:
+		health -= dam
 	healthBar.value = health
 	print(health)
 	if health <= 0.0:
