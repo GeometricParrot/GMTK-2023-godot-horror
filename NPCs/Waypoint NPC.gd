@@ -11,10 +11,9 @@ var rng = RandomNumberGenerator.new()
 
 
 @onready var rayArray: Array[RayCast2D] = [
-	$PointLight2D/RayCast2D,$PointLight2D/RayCast2D10,$PointLight2D/RayCast2D6,
+	$PointLight2D/RayCast2D,$PointLight2D/RayCast2D6,$PointLight2D/RayCast2D3,
 	$PointLight2D/RayCast2D7,$PointLight2D/RayCast2D8,$PointLight2D/RayCast2D9,
-	$PointLight2D/RayCast2D2,$PointLight2D/RayCast2D4,$PointLight2D/RayCast2D5,
-	$PointLight2D/RayCast2D3
+	$PointLight2D/RayCast2D2,$PointLight2D/RayCast2D4,$PointLight2D/RayCast2D5
 ]
 
 
@@ -37,9 +36,10 @@ func _physics_process(delta):
 	mytime +=1
 	
 	for i in rayArray.size():
-		if rayArray[i].get_collider() != null and mytime > 60:
-			rayArray[i].get_collider().hit(1)
-			
+		if rayArray[i].get_collider() != null:
+			if rayArray[i].get_collider().has_method("hit") and mytime > 60:
+				rayArray[i].get_collider().hit(1)
+				
 	
 	
 	
