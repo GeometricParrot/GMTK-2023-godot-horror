@@ -437,6 +437,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_idwtr")
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
+color = Color(0.890196, 1, 0.901961, 1)
 energy = 0.17
 shadow_enabled = true
 texture = ExtResource("3_jn0gb")
@@ -465,19 +466,21 @@ parameters/Idle/blend_position = Vector2(0, 0)
 parameters/Slide/blend_position = Vector2(0, -0.0419161)
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = -30.0
-offset_top = -46.0
-offset_right = 23.0
-offset_bottom = -19.0
+modulate = Color(0, 1, 0, 1)
+offset_left = -35.0
+offset_top = -42.0
+offset_right = 30.0
+offset_bottom = -28.0
+max_value = 150.0
 step = 1.0
-value = 100.0
+value = 150.0
 show_percentage = false
 
 [node name="Stealth" type="ProgressBar" parent="."]
-offset_left = -194.0
-offset_top = -116.0
-offset_right = -141.0
-offset_bottom = -89.0
+offset_left = -26.0
+offset_top = -25.0
+offset_right = 20.0
+offset_bottom = -20.0
 max_value = 300.0
 step = 1.0
 value = 250.0

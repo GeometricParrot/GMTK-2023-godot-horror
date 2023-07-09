@@ -21,6 +21,7 @@ position = Vector2(-1, 0)
 shape = SubResource("CircleShape2D_q30ld")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.945098, 0, 0, 1)
 energy = 0.5
 shadow_enabled = true
 shadow_item_cull_mask = 2
@@ -29,45 +30,51 @@ offset = Vector2(98, 98)
 texture_scale = 1.5
 
 [node name="RayCast2D" type="RayCast2D" parent="PointLight2D"]
-target_position = Vector2(0, 150)
+target_position = Vector2(0, 200)
+collision_mask = 32
+
+[node name="RayCast2D10" type="RayCast2D" parent="PointLight2D"]
+position = Vector2(184, 11)
+rotation = 0.756527
+target_position = Vector2(0, 250)
 collision_mask = 32
 
 [node name="RayCast2D6" type="RayCast2D" parent="PointLight2D"]
 rotation = -0.204282
-target_position = Vector2(0, 150)
+target_position = Vector2(0, 200)
 collision_mask = 32
 
 [node name="RayCast2D7" type="RayCast2D" parent="PointLight2D"]
 rotation = -0.594927
-target_position = Vector2(0, 150)
+target_position = Vector2(0, 200)
 collision_mask = 32
 
 [node name="RayCast2D8" type="RayCast2D" parent="PointLight2D"]
 rotation = -1.03337
-target_position = Vector2(0, 150)
+target_position = Vector2(0, 200)
 collision_mask = 32
 
 [node name="RayCast2D9" type="RayCast2D" parent="PointLight2D"]
 rotation = -1.39514
-target_position = Vector2(0, 150)
+target_position = Vector2(0, 200)
 collision_mask = 32
 
 [node name="RayCast2D2" type="RayCast2D" parent="PointLight2D"]
 rotation = -1.26673
-target_position = Vector2(0, 150)
+target_position = Vector2(0, 200)
 collision_mask = 32
 
 [node name="RayCast2D4" type="RayCast2D" parent="PointLight2D"]
 rotation = -1.55017
-target_position = Vector2(0, 150)
+target_position = Vector2(0, 200)
 collision_mask = 32
 
 [node name="RayCast2D5" type="RayCast2D" parent="PointLight2D"]
 rotation = -0.413256
-target_position = Vector2(0, 150)
+target_position = Vector2(0, 200)
 collision_mask = 32
 
 [node name="RayCast2D3" type="RayCast2D" parent="PointLight2D"]
 rotation = -0.815679
-target_position = Vector2(0, 150)
+target_position = Vector2(0, 200)
 collision_mask = 32

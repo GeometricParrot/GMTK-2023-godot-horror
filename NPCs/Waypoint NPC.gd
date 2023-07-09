@@ -11,8 +11,10 @@ var rng = RandomNumberGenerator.new()
 
 
 @onready var rayArray: Array[RayCast2D] = [
-	$PointLight2D/RayCast2D,$PointLight2D/RayCast2D2,$PointLight2D/RayCast2D4,
-	$PointLight2D/RayCast2D5,$PointLight2D/RayCast2D3
+	$PointLight2D/RayCast2D,$PointLight2D/RayCast2D10,$PointLight2D/RayCast2D6,
+	$PointLight2D/RayCast2D7,$PointLight2D/RayCast2D8,$PointLight2D/RayCast2D9,
+	$PointLight2D/RayCast2D2,$PointLight2D/RayCast2D4,$PointLight2D/RayCast2D5,
+	$PointLight2D/RayCast2D3
 ]
 
 

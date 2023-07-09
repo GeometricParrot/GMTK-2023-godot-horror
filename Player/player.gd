@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export_range(0.01, 0.5, 0.01) var accel := 0.1
 @export_range(50, 1000, 10) var maxSpeed := 100.0
 var direction: Vector2
-var health = 100
+var health = 150
 var hiding: bool = false
 @onready var healthBar = $ProgressBar
 @onready var stealthBar = $Stealth
