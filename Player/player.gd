@@ -10,6 +10,7 @@ var hiding: bool = false
 @onready var stealthBar = $Stealth
 
 @onready var myLight = $PointLight2D2
+@onready var myOccluder = $Icon/LightOccluder2D
 
 @onready var music = $"Music Controller"
 @onready var animation_tree = $AnimationTree
@@ -26,14 +27,17 @@ func _physics_process(delta):
 			input_vector *= 0.3
 			myLight.set_blend_mode(myLight.BLEND_MODE_SUB)
 			myLight.shadow_enabled = false
+			myOccluder.set_occluder_light_mask(9)
 		else:
 			myLight.set_blend_mode(myLight.BLEND_MODE_ADD)
 			myLight.shadow_enabled = true
+			myOccluder.set_occluder_light_mask(2)
 	else:
 		hiding = false
 		stealthBar.value += 1
 		myLight.set_blend_mode(myLight.BLEND_MODE_ADD)
 		myLight.shadow_enabled = true
+		myOccluder.set_occluder_light_mask(2)
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
