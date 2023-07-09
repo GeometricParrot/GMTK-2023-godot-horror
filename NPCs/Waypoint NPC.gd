@@ -8,9 +8,15 @@ var direction: Vector2 = Vector2(0,0)
 
 var localT = 0.0
 
+@onready var rayArray: Array[RayCast2D] = [
+	$PointLight2D/RayCast2D,$PointLight2D/RayCast2D2,$PointLight2D/RayCast2D4,
+	$PointLight2D/RayCast2D5,$PointLight2D/RayCast2D3
+]
+
+
 
 @export_range(0.01, 0.5, 0.01) var accel = 0.1
-@export_range(20, 300, 5) var maxSpeed = 100.0
+@export_range(20, 300, 5) var maxSpeed = 40.0
 @export var waypointThreshold = 40
 
 @onready var flashlight = $PointLight2D
@@ -18,11 +24,21 @@ var localT = 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-
+var mytime = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 func _physics_process(delta):
+	
+	mytime +=1
+	
+	for i in rayArray.size():
+		if rayArray[i].get_collider() != null and mytime > 60:
+			print(rayArray[i].get_collider())
+			rayArray[i].get_collider().hit(1)
+			
+	
+	
 	
 	localT += 0.15
 	

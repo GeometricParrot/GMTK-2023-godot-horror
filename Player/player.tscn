@@ -412,7 +412,7 @@ states/Start/position = Vector2(209, 100)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_sgk3u"), "Slide", "Idle", SubResource("AnimationNodeStateMachineTransition_e8a6o"), "Idle", "Slide", SubResource("AnimationNodeStateMachineTransition_id63j")]
 
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 3
+collision_layer = 35
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_fscpc")
@@ -444,11 +444,6 @@ collision_mask = 0
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_idwtr")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
-process_callback = 0
-position_smoothing_enabled = true
-
 [node name="PointLight2D2" type="PointLight2D" parent="."]
 energy = 0.3
 shadow_enabled = true
@@ -475,6 +470,15 @@ parameters/conditions/idle = false
 parameters/conditions/slide = false
 parameters/Idle/blend_position = Vector2(0, 0)
 parameters/Slide/blend_position = Vector2(0, -0.0419161)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -30.0
+offset_top = -46.0
+offset_right = 23.0
+offset_bottom = -19.0
+step = 1.0
+value = 100.0
+show_percentage = false
 
 [connection signal="area_shape_entered" from="TileDetector" to="." method="_on_tile_detector_area_shape_entered"]
 [connection signal="body_shape_entered" from="TileDetector" to="." method="_on_tile_detector_body_shape_entered"]

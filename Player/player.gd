@@ -4,6 +4,8 @@ extends CharacterBody2D
 @export_range(0.01, 0.5, 0.01) var accel := 0.1
 @export_range(50, 1000, 10) var maxSpeed := 100.0
 var direction: Vector2
+var health = 100
+@onready var healthBar = $ProgressBar
 
 @onready var music = $"Music Controller"
 @onready var animation_tree = $AnimationTree
@@ -72,7 +74,12 @@ func handle_animations() -> void:
 	if dir != Vector2.ZERO:
 		animation_tree["parameters/Idle/blend_position"] = dir 
 		animation_tree["parameters/Slide/blend_position"] = dir
-	print(velocity)
+	#print(velocity)
 	
-	
-
+func hit(dam):
+	health -= dam
+	healthBar.value = health
+	print(health)
+	if health <= 0.0:
+		queue_free()
+		get_tree().change_scene_to_file("res://World/world.tscn")

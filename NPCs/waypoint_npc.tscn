@@ -26,3 +26,47 @@ shadow_item_cull_mask = 2
 texture = ExtResource("3_xb50g")
 offset = Vector2(98, 98)
 texture_scale = 1.5
+
+[node name="RayCast2D" type="RayCast2D" parent="PointLight2D"]
+target_position = Vector2(0, 150)
+collision_mask = 32
+
+[node name="RayCast2D6" type="RayCast2D" parent="PointLight2D"]
+rotation = -0.204282
+target_position = Vector2(0, 150)
+collision_mask = 32
+
+[node name="RayCast2D7" type="RayCast2D" parent="PointLight2D"]
+rotation = -0.594927
+target_position = Vector2(0, 150)
+collision_mask = 32
+
+[node name="RayCast2D8" type="RayCast2D" parent="PointLight2D"]
+rotation = -1.03337
+target_position = Vector2(0, 150)
+collision_mask = 32
+
+[node name="RayCast2D9" type="RayCast2D" parent="PointLight2D"]
+rotation = -1.39514
+target_position = Vector2(0, 150)
+collision_mask = 32
+
+[node name="RayCast2D2" type="RayCast2D" parent="PointLight2D"]
+rotation = -1.26673
+target_position = Vector2(0, 150)
+collision_mask = 32
+
+[node name="RayCast2D4" type="RayCast2D" parent="PointLight2D"]
+rotation = -1.55017
+target_position = Vector2(0, 150)
+collision_mask = 32
+
+[node name="RayCast2D5" type="RayCast2D" parent="PointLight2D"]
+rotation = -0.413256
+target_position = Vector2(0, 150)
+collision_mask = 32
+
+[node name="RayCast2D3" type="RayCast2D" parent="PointLight2D"]
+rotation = -0.815679
+target_position = Vector2(0, 150)
+collision_mask = 32
