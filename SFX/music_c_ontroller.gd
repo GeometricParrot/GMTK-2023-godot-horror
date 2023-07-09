@@ -1,9 +1,8 @@
 extends Node
 
 
-var currentlyPlaying: int = 3	# index in playlist array
-@onready var playlist = [$Armory, $Cell, $Hallway, 
-$Janitory, $Lockers, $Office, $Research]
+var currentlyPlaying: int = 0	# index in playlist array
+@onready var playlist = [$Janitory ]
 
 
 # Called when the node enters the scene tree for the first time.
@@ -20,16 +19,16 @@ func _process(_delta):
 
 func _on_trigger_hall_area_entered(_area):
 	print("playing hall")
-	play_song(2)
+	play_song(0)
 
 
 func _on_trigger_research_area_entered(_area):
 	print("playing research")
-	play_song(6)
+	play_song(0)
 
 
 func play_song(newSong: int):
-	
+	newSong = 0
 	if newSong != currentlyPlaying:
 		
 		# start the song if not playing

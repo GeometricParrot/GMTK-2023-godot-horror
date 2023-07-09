@@ -13,3 +13,7 @@ func _process(_delta):
 
 func _on_button_pressed():
 	get_tree().change_scene_to_file("res://World/world.tscn")
+
+# trigger credit
+func _on_button_2_pressed():
+	get_tree().change_scene_to_file("res://UI/credits.tscn")

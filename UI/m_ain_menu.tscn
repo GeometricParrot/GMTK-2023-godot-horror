@@ -45,4 +45,14 @@ text = "Shift to sneak
 alt to dash
 space to attack"
 
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 692.0
+offset_top = 943.0
+offset_right = 875.0
+offset_bottom = 975.0
+scale = Vector2(2.16695, 1.84125)
+text = "Credits"
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

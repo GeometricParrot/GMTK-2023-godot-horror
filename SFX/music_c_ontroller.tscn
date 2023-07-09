@@ -1,40 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwujuhcy23dqa"]
+[gd_scene load_steps=3 format=3 uid="uid://dwujuhcy23dqa"]
 
 [ext_resource type="Script" path="res://SFX/music_c_ontroller.gd" id="1_04ms1"]
-[ext_resource type="AudioStream" uid="uid://cyqw76ik4xcrn" path="res://SFX/Underground Facility Ambient Pack/WAV/Ambience_Cell.wav" id="2_r2we5"]
-[ext_resource type="AudioStream" uid="uid://c4ney8lyutqww" path="res://SFX/Underground Facility Ambient Pack/WAV/Ambience_Hallway.wav" id="3_uo6xg"]
 [ext_resource type="AudioStream" uid="uid://dqepaqil8euvd" path="res://SFX/Underground Facility Ambient Pack/WAV/Ambience_Janitory.wav" id="4_ueu03"]
-[ext_resource type="AudioStream" uid="uid://hfudpjf2vlsu" path="res://SFX/Underground Facility Ambient Pack/WAV/Ambience_Lockers.wav" id="5_iq6v1"]
-[ext_resource type="AudioStream" uid="uid://dlkb4id7algv8" path="res://SFX/Underground Facility Ambient Pack/WAV/Ambience_Office.wav" id="6_j5dr2"]
-[ext_resource type="AudioStream" uid="uid://bcxg057sd4gvc" path="res://SFX/Underground Facility Ambient Pack/WAV/Ambience_Research.wav" id="7_ckffx"]
 
 [node name="Music Controller" type="Node"]
 script = ExtResource("1_04ms1")
 
-[node name="Armory" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_r2we5")
-volume_db = -40.0
-
-[node name="Cell" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_r2we5")
-volume_db = -40.0
-
-[node name="Hallway" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_uo6xg")
-volume_db = -40.0
-
 [node name="Janitory" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ueu03")
-volume_db = -40.0
-
-[node name="Lockers" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_iq6v1")
-volume_db = -40.0
-
-[node name="Office" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_j5dr2")
-volume_db = -40.0
-
-[node name="Research" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_ckffx")
 volume_db = -40.0
