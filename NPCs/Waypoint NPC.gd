@@ -64,9 +64,14 @@ func follow_waypoint(delta):
 		
 		# when close to waypoint
 		if abs(pointPos - global_position).length() < waypointThreshold:
-			if currentWaypoint != way_array.size() - 1:
+			
+			if currentWaypoint > way_array.size() - 1:
+				currentWaypoint -= 1
+			elif currentWaypoint < 0:
+				currentWaypoint += 1
+			else:
 				var uncertan = rng.randi_range(-1, 1)
 				currentWaypoint += 1 * uncertan
-			else:
-				currentWaypoint = 0
+				currentWaypoint = currentWaypoint
+			
 		return flashlight.rotation
